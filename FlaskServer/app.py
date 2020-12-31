@@ -3,21 +3,13 @@ from flask import request
 from flask import jsonify
 import threading
 
+from budget-utils import database as db
+
 app = Flask(__name__)
 
 # Replace this info with your own.
 key = "api key here"
 password = "Mellon"
-
-track = {}
-
-def addDevice(device, name, lastSeen = "N/A"):
-    dev = {
-    'addr' : device,
-    'name' : name,
-    'lastSeen' : lastSeen
-    }
-    return dev
 
 @app.route('/')
 def welcome():
@@ -53,8 +45,6 @@ def home():
 @app.route('/about/')
 def about():
     return render_template('about.html')
-
-# Data should be in the form of "ClientID\Device"
 
 @app.route('/tracker/', methods=['POST'])
 def report():
@@ -93,34 +83,9 @@ def delete():
         return 'Device Deleted', 200
     return 'This is a POST only endpoint', 200
 
-def loadTargets():
-    try:
-        f = open("targets.txt", "r")
-        lines = f.readlines()
-
-        for line in lines:
-            t = line.strip().split("\\")
-            dev = addDevice(t[0], t[1], t[2])
-            track[t[0]] = dev
-    except:
-        return
-
-def saveTargets(timerStop):
-    f = open("targets.txt", "w+")
-    for key, val in track.items():
-        f.write(val['addr'] + "\\" + val['name'] + "\\" + val['lastSeen'] + "\r\n")
-    f.close()
-
-    if not timerStop.is_set():
-        threading.Timer(10, saveTargets, [timerStop]).start()
-
-timerStop = threading.Event()
-
 
 if __name__ == '__main__':
 
-    loadTargets()
-    saveTargets(timerStop)
 
     app.run(host='0.0.0.0')
     #app.run()
