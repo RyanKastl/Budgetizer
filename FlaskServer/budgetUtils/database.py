@@ -20,14 +20,18 @@ def getData(path):
     f = open(path, "r")
     lines = f.readlines() 
     f.close()
-
-    data = {}
+    
+    dataItems = {}
 
     for line in lines:
+        data = {}
         parts = line.split("=")
-        data[parts[0]] = parts[1].strip()
+        data['name'] = parts[0]
+        data['value'] = parts[1].strip()
+        data['type'] = 'None'
+        dataItems[parts[0]] = data
 
-    return data
+    return dataItems
 
 def addData(field, value, path):
 
@@ -36,7 +40,7 @@ def addData(field, value, path):
     f.close()
     return
 
-def deleteData(field, value, path):
+def deleteData(field, path):
 
     f = open(path, "r")
     lines = f.readlines()

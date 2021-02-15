@@ -7,21 +7,21 @@
 
   	function MainController($scope, $interval, $location, $rootScope) {
 
-	    $scope.devices = {};
+	    $scope.globalData = {};
 
-	    $scope.getDevices = function () {
+	    $scope.getData = function () {
 			$.get(
 			    "/refresh/",
 			    {paramOne : 1, paramX : 'abc'},
 			    function(data) {
-			    	$scope.devices = data;
+			    	$scope.globalData = data;
 			       	console.log(data)
 			    }
 			);
 	    };
 
 	    $scope.initialize = function(data) {
-	    	$scope.devices = data;
+	    	$scope.globalData = data;
 	    };
   	};
 }());

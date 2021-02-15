@@ -3,13 +3,15 @@ from flask import request
 from flask import jsonify
 import threading
 
-from budget-utils import database as db
+from budgetUtils import database as db
 
 app = Flask(__name__)
 
 # Replace this info with your own.
 key = "api key here"
 password = "Mellon"
+
+GLOBAL_DATA_PATH = "DATA/GLOBAL/globalData.txt"
 
 @app.route('/')
 def welcome():
@@ -38,25 +40,12 @@ def home():
         return redirect(url_for('welcome'))
     if request.method == 'POST':
         data = request.form
-        dev = addDevice(data['device'].lower(), data['name'])
-        track[data['device'].lower()] = dev
+        db.addData(data['dataName'], data['dataValue'], GLOBAL_DATA_PATH)
     return render_template('home.html')
 
 @app.route('/about/')
 def about():
     return render_template('about.html')
-
-@app.route('/tracker/', methods=['POST'])
-def report():
-    if request.method == 'POST':
-        data = request.form
-        if (data['apiKey'] != key):
-            return 'You are not logged in.', 403
-        report = data['mssg'].split("\\")
-        if (len(report) != 2):
-            return 'Bad Format', 400
-        track[report[1]]['lastSeen'] = report[0]
-    return 'Received.', 200
 
 @app.route('/refresh/', methods=['GET', 'POST'])
 def refresh():
@@ -69,7 +58,7 @@ def refresh():
         auth = request.cookies.get('apiKey')
         if (auth != key):
             return 'You are not logged in.', 403
-    return jsonify(track)
+    return jsonify(db.getData(GLOBAL_DATA_PATH))
 
 @app.route('/delete/', methods=['POST'])
 def delete():
@@ -78,9 +67,9 @@ def delete():
     if (auth != key):
         return 'You are not logged in.', 403
     if request.method == 'POST':
-        dev = request.form['dKey']
-        del track[dev]
-        return 'Device Deleted', 200
+        dataName = request.form['dKey']
+        db.deleteData(dataName, GLOBAL_DATA_PATH)
+        return 'Data Deleted', 200
     return 'This is a POST only endpoint', 200
 
 

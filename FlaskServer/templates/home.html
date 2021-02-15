@@ -12,19 +12,19 @@
 
 	  		$scope.editMode = false;
 
-		    $scope.devices = {}; 
+		    $scope.globalData = {}; 
 
-		    $scope.getDevices = function () {
+		    $scope.getData = function () {
 				$.get(
 				    "/refresh/",
 				    {},
 				    function(data) {
-				    	$scope.devices = data;
+				    	$scope.globalData = data;
 				    }
 				);
 		    };
 
-		    $scope.deleteDevice = function (key) {
+		    $scope.deleteData = function (key) {
 		    	$.post(
 		    		"/delete/", 
 		    		{dKey: key}, 
@@ -34,32 +34,32 @@
 		    }
 
 		    $interval(function() {
-		    	$scope.getDevices();
+		    	$scope.getData();
 		    }, 500);
 	  	};
 	}());
 </script>
 
 <div class="home" ng-controller="MainController">
-    <h1>Tracked Devices:</h1>
-    <div ng-click="getDevices()"> <button type="button"> FORCE REFRESH </button></div>
+    <h1>Global Data:</h1>
+    <div ng-click="getData()"> <button type="button"> FORCE REFRESH </button></div>
     <form action="/home/" method="post">
     	<fieldset>
-	    	Device MAC:<br>
-			<input type="text" name="device" value=""><br>
-			Device Name:<br>
-			<input type="text" name="name" value=""><br><br>
-			<input type="submit" value="Add Device">
+	    	Data Name:<br>
+			<input type="text" name="dataName" value=""><br>
+			Data Value:<br>
+			<input type="text" name="dataValue" value=""><br><br>
+			<input type="submit" value="Add Data">
 		</fieldset>
     </form>
     <table>
     	<tr>
-    		<td> Device </td> <td> Name </td> <td> Last Seen </td> 
+    		<td> Name </td> <td> Value </td> <td> Type </td> 
     		<td ng-click="editMode = !editMode"> <button type="button"> EDIT MODE </button></td>
     	</tr>
-  		<tr ng-repeat="(key, value) in devices">
-    		<td> [[ value['addr'] ]] </td> <td> [[ value['name'] ]] </td> <td> [[ value['lastSeen'] ]] </td> 
-    		<td ng-if="editMode" ng-click="deleteDevice(key)">  <button type="button"> DELETE </button> </td>
+  		<tr ng-repeat="(key, value) in globalData">
+    		<td> [[ value['name'] ]] </td> <td> [[ value['value'] ]] </td> <td> [[ value['type'] ]] </td> 
+    		<td ng-if="editMode" ng-click="deleteData(key)">  <button type="button"> DELETE </button> </td>
   		</tr>
 	</table>
 </div>
