@@ -11,7 +11,7 @@ app = Flask(__name__)
 key = "api key here"
 password = "Mellon"
 
-GLOBAL_DATA_PATH = "DATA/GLOBAL/globalData.txt"
+GLOBAL_DATA_PATH = "DATA/ARCHIVE/data.txt"
 
 @app.route('/')
 def welcome():

@@ -41,20 +41,19 @@
 </script>
 
 <div class="home" ng-controller="MainController">
-    <h1>Global Data:</h1>
     <div ng-click="getData()"> <button type="button"> FORCE REFRESH </button></div>
     <form action="/home/" method="post">
     	<fieldset>
-	    	Data Name:<br>
+	    	<h3>Data Name:</h3><br>
 			<input type="text" name="dataName" value=""><br>
-			Data Value:<br>
+			<h3>Data Value:</h3><br>
 			<input type="text" name="dataValue" value=""><br><br>
 			<input type="submit" value="Add Data">
 		</fieldset>
     </form>
     <table>
     	<tr>
-    		<td> Name </td> <td> Value </td> <td> Type </td> 
+    		<td><h3> Name &nbsp</h3></td> <td><h3> Value &nbsp</h3></td> <td><h3> Type </h3></td> 
     		<td ng-click="editMode = !editMode"> <button type="button"> EDIT MODE </button></td>
     	</tr>
   		<tr ng-repeat="(key, value) in globalData">

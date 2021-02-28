@@ -2,13 +2,13 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #444;
+  background-color: #191414;
 }
 /*
  * Formatting the header area
  */
 header {
-  background-color: #DFB887;
+  background-color: #1DB954;
   height: 35px;
   width: 100%;
   opacity: .9;
@@ -32,9 +32,13 @@ header h1.logo:hover {
   width: 1200px;
   margin: 0 auto;
 }
+.sidePanel {
+  width: 300px;
+  margin: 0 0;
+}
 div.home {
   padding: 10px 0 30px 0;
-  background-color: #E6E6FA;
+  background-color: #191414;
   -webkit-border-radius: 6px;
      -moz-border-radius: 6px;
           border-radius: 6px;
@@ -51,6 +55,7 @@ h2 {
   margin-top: 40px;
   text-align: center;
   letter-spacing: -2px;
+  color: #1DB954;
 }
 h3 {
   font-size: 1.7em;
@@ -58,7 +63,7 @@ h3 {
   margin-top: 30px;
   text-align: center;
   letter-spacing: -1px;
-  color: #999;
+  color: #1DB954;
 }
 .menu {
   float: right;
