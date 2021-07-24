@@ -58,6 +58,7 @@ function App() {
       <div className="Data-container">
         <DataControl />
         <div className="Data-item">Test item</div>
+        <div className="Data-item">Test item</div>
       </div>
     </div>
   );

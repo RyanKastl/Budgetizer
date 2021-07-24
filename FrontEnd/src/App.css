@@ -3,11 +3,12 @@
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  border: 1px solid blue;
 }
 
 .App-logo {
@@ -46,17 +47,17 @@
 }
 
 .Chart-body {
+  order: 2;
   width: 25%;
   margin: auto;
 }
 
 .Data-container {
-  position: absolute;
-  left: 0;
-  top: 0;
+  order: 1;
   background-color: #1f2229;
   width: 15%;
-  height: 100%;
+  border: 1px solid white;
+  align-self: stretch;
 }
 
 .Data-control {
@@ -67,4 +68,9 @@
 .Data-item {
   border-bottom: 1px solid #525b70;
   padding-bottom: 5px;
+}
+
+.App-container {
+  display: flex;
+  flex-direction: row;
 }
