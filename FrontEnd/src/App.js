@@ -37,13 +37,21 @@ const PieChart = () => (
   </>
 );
 
+function DataItem(props) {
+  return (
+    <div className="Data-item">
+      {props.label}: {props.value}
+    </div>
+  );
+}
+
 function DataControl() {
   return (
     <div className="Data-control">
       <form>
-        <input type="text"></input>
-        <input type="text"></input>
-        <button type="submit">Add</button>
+        <input type="text" placeholder="Label"></input>
+        <input type="text" placeholder="Amount"></input>
+        <div className="Data-control-add">Add Data</div>
       </form>
     </div>
   );
@@ -55,10 +63,12 @@ function App() {
       <header className="Chart-body">
         <PieChart className="Chart-body"/>
       </header>
-      <div className="Data-container">
+      <div className="Data">
         <DataControl />
-        <div className="Data-item">Test item</div>
-        <div className="Data-item">Test item</div>
+        <DataItem 
+          label="sub"
+          value="456"
+        />
       </div>
     </div>
   );
