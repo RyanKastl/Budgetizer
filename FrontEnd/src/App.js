@@ -1,5 +1,6 @@
 import './App.css';
 import { Pie } from 'react-chartjs-2';
+import React from 'react';
 
 const data = {
   labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
@@ -45,16 +46,26 @@ function DataItem(props) {
   );
 }
 
-function DataControl() {
-  return (
-    <div className="Data-control">
-      <form>
-        <input type="text" placeholder="Label"></input>
-        <input type="text" placeholder="Amount"></input>
-        <div className="Data-control-add">Add Data</div>
-      </form>
-    </div>
-  );
+class DataControl extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { label: '',
+                   value: '' };
+  }
+
+  render() {
+    return (
+      <div className="Data-control">
+        <form>
+          <h1>Hello {this.state.label}</h1>
+          <input type="text" placeholder="Label"></input>
+          <input type="text" placeholder="Amount"></input>
+          <div className="Data-control-add">Add Data</div>
+        </form>
+      </div>
+    );
+  }
+  
 }
 
 function App() {
