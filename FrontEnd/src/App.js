@@ -48,7 +48,7 @@ function DataItem(props) {
   );
 }
 
-function DataControl() {
+function DataControl(props) {
   const [labelValue, setLabelValue] = useState("");
   const [amountValue, setAmountValue] = useState("");
 
@@ -61,6 +61,7 @@ function DataControl() {
   }
 
   const resetInputField = () => {
+    props.onAdd(labelValue, amountValue);
     setLabelValue("");
     setAmountValue("");
   };
@@ -75,26 +76,43 @@ function DataControl() {
   
 }
 
-function Data() {
-  
-  const dataList = [
-    {
-    items: [
-      { label: "test", amount: "300" },
-      { label: "blah", amount: "45"  },
-      { label: "sup",  amount: "839" },
-    ]}
-  ];
+class Data extends React.Component {
 
-  return (
-    <div className="Data">
-      <DataControl />
-      <DataItem 
-        label="sub"
-        value="456"
-      />
-    </div>
-  );
+  constructor(props) {
+    super(props);
+    this.state = {
+      dataList: [
+        { label: "test", amount: "300" },
+        { label: "blah", amount: "45"  },
+        { label: "sup",  amount: "839" },
+      ]
+    }
+  }
+
+  handleOnAdd(label, amount) {
+    const newDL = this.state.dataList.concat([{label:label, amount:amount}]);
+    this.setState({
+      dataList: newDL
+    });
+    this.state.dataList.push({label: label, amount: amount});
+  }
+
+
+  render() {
+
+    const dataMap = this.state.dataList.map((item, index) => {
+      return (
+      <DataItem key={index} label={item.label} value={item.amount} />
+      );
+    });
+
+    return (
+      <div className="Data">
+        <DataControl onAdd={(l,v) => this.handleOnAdd(l, v)} />
+        {dataMap}
+      </div>
+    );
+  };
 }
 
 function App() {
