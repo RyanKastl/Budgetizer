@@ -1,6 +1,6 @@
 import './App.css';
 import { Pie } from 'react-chartjs-2';
-import React from 'react';
+import React, { useState } from 'react';
 
 const data = {
   labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
@@ -29,14 +29,16 @@ const data = {
   ],
 };
 
-const PieChart = () => (
-  <>
-    <div className='header'>
-      <h1 className='title'>Pie Chart</h1>
-    </div>
-    <Pie data={data} />
-  </>
-);
+function PieChart(props) {
+  return (
+    <>
+      <div className='header'>
+        <h1 className='title'>Pie Chart</h1>
+      </div>
+      <Pie data={props.data} />
+    </>
+  );
+};
 
 function DataItem(props) {
   return (
@@ -46,41 +48,65 @@ function DataItem(props) {
   );
 }
 
-class DataControl extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { label: '',
-                   value: '' };
+function DataControl() {
+  const [labelValue, setLabelValue] = useState("");
+  const [amountValue, setAmountValue] = useState("");
+
+  const handleLabelInput = (e) => {
+    setLabelValue(e.target.value);
+  };
+
+  const handleAmountInput = (e) => {
+    setAmountValue(e.target.value);
   }
 
-  render() {
-    return (
-      <div className="Data-control">
-        <form>
-          <h1>Hello {this.state.label}</h1>
-          <input type="text" placeholder="Label"></input>
-          <input type="text" placeholder="Amount"></input>
-          <div className="Data-control-add">Add Data</div>
-        </form>
-      </div>
-    );
-  }
+  const resetInputField = () => {
+    setLabelValue("");
+    setAmountValue("");
+  };
+
+  return (
+    <div className="Data-control">
+      <input className="Data-control-input" type="text" value={labelValue} onChange={handleLabelInput} />
+      <input className="Data-control-input" type="text" value={amountValue} onChange={handleAmountInput} />
+      <button className="Data-control-add" onClick={ resetInputField }>Add Data</button>
+    </div>
+  );
   
 }
 
+function Data() {
+  
+  const dataList = [
+    {
+    items: [
+      { label: "test", amount: "300" },
+      { label: "blah", amount: "45"  },
+      { label: "sup",  amount: "839" },
+    ]}
+  ];
+
+  return (
+    <div className="Data">
+      <DataControl />
+      <DataItem 
+        label="sub"
+        value="456"
+      />
+    </div>
+  );
+}
+
 function App() {
+
+  const testData = data;
+
   return (
     <div className="App">
       <header className="Chart-body">
-        <PieChart className="Chart-body"/>
+        <PieChart className="Chart-body" data={testData}/>
       </header>
-      <div className="Data">
-        <DataControl />
-        <DataItem 
-          label="sub"
-          value="456"
-        />
-      </div>
+      <Data />
     </div>
   );
 }

@@ -65,6 +65,10 @@
   padding-bottom: 5px;
 }
 
+.Data-control-input {
+  width: 75%;
+}
+
 .Data-control-add {
   background-color: #525b70;
   width: 81%;
