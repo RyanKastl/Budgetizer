@@ -1,0 +1,36 @@
+.Chart-body {
+    order: 2;
+    width: 25%;
+    margin: auto;
+}
+
+.Data {
+    order: 1;
+    background-color: #1f2229;
+    width: 15%;
+    align-self: stretch;
+}
+
+.Data-control {
+    border-bottom: 1px solid #525b70;
+    padding-bottom: 5px;
+}
+
+.Data-control-input {
+    width: 75%;
+}
+
+.Data-control-add {
+    background-color: #525b70;
+    width: 81%;
+    margin: 10px auto;
+    cursor: pointer;
+    user-select: none;
+    font-size: 18px;
+}
+
+.Data-item {
+    border-bottom: 1px solid #525b70;
+    padding-bottom: 5px;
+    font-size: 18px;
+}
