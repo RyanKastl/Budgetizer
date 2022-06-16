@@ -1,20 +1,9 @@
 import './ExpenseChart.css';
 import '../App.css';
 import * as Constants from '../Constants/ChartDefaults';
-import { Pie } from 'react-chartjs-2';
+import PieChart from '../Components/PieChart';
+import GaugeChart from '../Components/GaugeChart';
 import React, { useState } from 'react';
-
-
-function PieChart(props) {
-    return (
-        <>
-            <div className='header'>
-                <h1 className='title'>Expenses</h1>
-            </div>
-            <Pie data={props.data} />
-        </>
-    );
-};
 
 function DataItem(props) {
     return (
@@ -102,7 +91,7 @@ class Data extends React.Component {
         return (
             <div className="App">
                 <header className="Chart-body">
-                    <PieChart className="Chart-body" data={data} />
+                    <GaugeChart className="Chart-body" data={data} />
                 </header>
                 <div className="Data">
                     <DataControl onAdd={(l, v) => this.handleOnAdd(l, v)} />
