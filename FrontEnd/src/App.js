@@ -1,5 +1,6 @@
 import './App.css';
-import Data from './Pages/ExpenseChart';
+import AppContainer from './Components/AppContainer';
+import ExpenseChart from './Pages/ExpenseChart';
 import React, { useState } from 'react';
 
 function App() {
@@ -10,13 +11,10 @@ function App() {
     setFlagValue(!flagValue);
   };
 
-  var currentPage = flagValue ? <h1>Hey there</h1> : <Data />
+  var currentPage = flagValue ? <h1>Hey there</h1> : <ExpenseChart />
 
   return (
-    <div>
-      <button className="Data-control-add" onClick={ handleFlagSwitch }>Switch Page</button>
-      {currentPage}
-    </div>
+    <AppContainer></AppContainer>
   );
 }
 

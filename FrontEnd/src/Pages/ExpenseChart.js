@@ -41,7 +41,7 @@ function DataControl(props) {
 
 }
 
-class Data extends React.Component {
+class ExpenseChart extends React.Component {
 
     constructor(props) {
         super(props);
@@ -102,4 +102,4 @@ class Data extends React.Component {
     };
 }
 
-export default Data;
+export default ExpenseChart;
