@@ -4,8 +4,8 @@ import { Doughnut } from 'react-chartjs-2';
 const defaultOptions = 
 {
     //maintainAspectRatio: false, 
-    circumference: 180, 
-    rotation: 270, 
+    circumference: 300, 
+    rotation: 210, 
     cutout: "95%",
     plugins: {
         legend: {

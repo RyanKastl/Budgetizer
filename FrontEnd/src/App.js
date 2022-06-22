@@ -14,7 +14,7 @@ function App() {
   var currentPage = flagValue ? <h1>Hey there</h1> : <ExpenseChart />
 
   return (
-    <AppContainer></AppContainer>
+    <AppContainer page={currentPage}></AppContainer>
   );
 }
 
