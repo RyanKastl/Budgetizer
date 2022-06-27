@@ -6,7 +6,8 @@ function AppContainer(props) {
   return (
     <div className="AppContainer">
       <div className='AppBanner'>Budgetizer</div>
-      {props.page}
+      <div className='AppContent'>{props.page}</div>
+      <div className='AppFooter'>Panel</div>
     </div>
   );
 }

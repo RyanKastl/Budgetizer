@@ -18,3 +18,14 @@
     color: #505e9c;
     padding-bottom: 0.3em;
 }
+
+.AppContent {
+    flex: 1;
+    overflow: hidden;
+}
+
+.AppFooter {
+    margin-top: auto;
+    background-color: #181b20;
+    color: #505e9c;
+}

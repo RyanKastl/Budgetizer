@@ -1,11 +1,11 @@
 .Chart-body {
-    order: 2;
-    width: 25%;
+    /* order: 2; */
+    /* width: 25%; */
     margin: auto;
 }
 
 .Data {
-    order: 1;
+    /* order: 1; */
     background-color: #1f2229;
     width: 15%;
     align-self: stretch;
