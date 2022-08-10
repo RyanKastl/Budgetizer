@@ -6,6 +6,16 @@ import React, { useState } from 'react';
 
 function App() {
 
+  const pages = [
+    <TrackerPage/>,
+    <ExpenseChart/>
+  ];
+
+  const panelLabels = [
+    "Goals",
+    "Monthly"
+  ];
+
   const [flagValue, setFlagValue] = useState(false);
 
   const handleFlagSwitch = () => {

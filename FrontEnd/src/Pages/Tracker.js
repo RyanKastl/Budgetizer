@@ -30,7 +30,9 @@ function TrackerPage() {
                 </div>
             </div>
             <div className='TrackerBreakdown'>
-                Breakdown
+                <div className='GaugeContainer'>
+                    <GaugeChart data={PieData} options={PieOptions}/>
+                </div>
             </div>
         </div>
     );
