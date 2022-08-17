@@ -22,7 +22,8 @@
 
 .AppContent {
     flex: 1;
-    overflow: scroll;
+    border: 1px solid red;
+    display: flex;
 }
 
 .AppFooter {
@@ -30,4 +31,8 @@
     background-color: #181b20;
     color: #505e9c;
     font-size: 36px;
+}
+
+.PanelButton {
+    cursor: pointer;
 }

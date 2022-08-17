@@ -89,14 +89,13 @@ class ExpenseChart extends React.Component {
         };
 
         return (
-            <div className="App">
+            <div className="Data-container">
                 <div className="Data">
                     <DataControl onAdd={(l, v) => this.handleOnAdd(l, v)} />
                     {dataMap}
                 </div>
                 <header className="Chart-body">
-                    {/* <PieChart className="Chart-body" data={data} /> */}
-                    Chart
+                    <PieChart className="Chart-body" data={data} />
                 </header>
             </div>
         );

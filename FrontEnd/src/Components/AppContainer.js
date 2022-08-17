@@ -12,7 +12,7 @@ function AppContainer(props) {
   const labels = props.labels.map((lbl, index) => {
     
     return(
-    <span onClick={() => switchPage(props.pages[index])}>{lbl}   </span>
+    <span className='PanelButton' onClick={() => switchPage(props.pages[index])}>{lbl}   </span>
     );
   });
 
