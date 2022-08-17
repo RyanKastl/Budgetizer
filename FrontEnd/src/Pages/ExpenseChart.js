@@ -1,8 +1,8 @@
 import './ExpenseChart.css';
 import '../App.css';
 import * as Constants from '../Constants/ChartDefaults';
-// import PieChart from '../Components/PieChart';
-import GaugeChart from '../Components/GaugeChart';
+import PieChart from '../Components/PieChart';
+//import GaugeChart from '../Components/GaugeChart';
 import React, { useState } from 'react';
 
 function DataItem(props) {
@@ -95,7 +95,7 @@ class ExpenseChart extends React.Component {
                     {dataMap}
                 </div>
                 <header className="Chart-body">
-                    {/* <GaugeChart className="Chart-body" data={data} /> */}
+                    {/* <PieChart className="Chart-body" data={data} /> */}
                     Chart
                 </header>
             </div>

@@ -7,7 +7,7 @@
     flex-direction: column;
     /* align-items: center; */
     /* justify-content: center; */
-    font-size: calc(10px + 2vmin);
+    font-size: 12px;
     color: white;
 }
 
@@ -17,15 +17,17 @@
     background-color: #181b20;
     color: #505e9c;
     padding-bottom: 0.3em;
+    font-size: 36px;
 }
 
 .AppContent {
     flex: 1;
-    overflow: hidden;
+    overflow: scroll;
 }
 
 .AppFooter {
     margin-top: auto;
     background-color: #181b20;
     color: #505e9c;
+    font-size: 36px;
 }

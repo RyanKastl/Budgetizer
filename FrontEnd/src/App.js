@@ -2,7 +2,7 @@ import './App.css';
 import AppContainer from './Components/AppContainer';
 import ExpenseChart from './Pages/ExpenseChart';
 import TrackerPage from './Pages/Tracker';
-import React, { useState } from 'react';
+import React from 'react';
 
 function App() {
 
@@ -16,16 +16,8 @@ function App() {
     "Monthly"
   ];
 
-  const [flagValue, setFlagValue] = useState(false);
-
-  const handleFlagSwitch = () => {
-    setFlagValue(!flagValue);
-  };
-
-  var currentPage = flagValue ? <h1>Hey there</h1> : <ExpenseChart />
-
   return (
-    <AppContainer page={<TrackerPage/>}></AppContainer>
+    <AppContainer pages={pages} labels={panelLabels}></AppContainer>
   );
 }
 
