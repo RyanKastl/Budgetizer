@@ -1,17 +1,23 @@
 import './Tracker.css'
 import GaugeChart from '../Components/GaugeChart';
-import PieChart from '../Components/PieChart';
-import * as Constants from '../Constants/ChartDefaults';
+import BarGauge from '../Components/BarGauge';
 import React from 'react';
 
-const PieData = {
-    labels: ["Test1", "Test2", "Test3"],
+const AllocationData = {
+    labels: ["Test1"],
     datasets: [
         {
-            label: 'IDK',
-            data: [1234, 5930, 12800],
-            backgroundColor: Constants.ChartDefaults.backgrounds,
-            borderColor: Constants.ChartDefaults.borders,
+            label: 'Allocated',
+            data: [1234],
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 1,
+        },
+        {
+            label: 'Free',
+            data: [5930],
+            backgroundColor: 'rgba(99, 255, 86, 0.2)',
+            borderColor: 'rgba(99, 255, 86, 1)',
             borderWidth: 1,
         },
     ],
@@ -26,12 +32,12 @@ function TrackerPage() {
         <div className='TrackerContainer'>
             <div className='TrackerOverview'>
                 <div className='PieContainer'>
-                    <PieChart data={PieData} options={PieOptions}/>
+                    <BarGauge data={AllocationData} options={PieOptions}/>
                 </div>
             </div>
             <div className='TrackerBreakdown'>
                 <div className='GaugeContainer'>
-                    <GaugeChart data={PieData} options={PieOptions}/>
+                    <GaugeChart data={AllocationData} options={PieOptions}/>
                 </div>
             </div>
         </div>
